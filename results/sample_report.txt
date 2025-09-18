@@ -1,0 +1,25 @@
+REDVECTOR - Vulnerability Assessment Report
+=============================================
+Target: example.com
+
+
+[ Port Scan ] - 2025-09-18 10:41:06
+---------------------------------
+Port 80 - http (Server: AkamaiGHost)
+
+[🧠] Searching CVEs for service: http (Server: AkamaiGHost) 80...
+
+  [!] No CVEs found for this service.
+Port 443 - https
+
+[🧠] Searching CVEs for service: https 443...
+
+  - CVE-2022-35413 (Score: 9.8)
+WAPPLES through 6.0 has a hardcoded systemi account. A threat actor could use this account to access the system configuration and confidential information (such as SSL keys) via an HTTPS request to th...
+https://nvd.nist.gov/vuln/detail/CVE-2022-35413
+  - CVE-2022-42915 (Score: 8.1)
+curl before 7.86.0 has a double free. If curl is told to use an HTTP proxy for a transfer with a non-HTTP(S) URL, it sets up the connection to the remote server by issuing a CONNECT request to the pro...
+https://nvd.nist.gov/vuln/detail/CVE-2022-42915
+  - CVE-2024-6922 (Score: N/A)
+Automation Anywhere Automation 360 v21-v32 is vulnerable to Server-Side Request Forgery in a web API component. An attacker with unauthenticated access to the Automation 360 Control Room HTTPS service...
+https://nvd.nist.gov/vuln/detail/CVE-2024-6922
