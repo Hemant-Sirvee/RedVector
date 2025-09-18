@@ -34,10 +34,8 @@ RedVector is a **CLI-based automated vulnerability assessment toolkit** written 
 ```bash
 git clone https://github.com/yourusername/RedVector.git
 cd RedVector
-python -m venv venv
-source venv/bin/activate       # Linux/Mac
-venv\Scripts\activate          # Windows
-pip install -r requirements.txt
+chmod +x setup.sh
+bash ./setup.sh
 ```
 
 ---
@@ -46,7 +44,7 @@ pip install -r requirements.txt
 
 Run the main script using:
 ```bash 
-python main.py -u <target> --scan <scan_type> [--threads <num_threads>]
+redvector -u <target> --scan <scan_type> [--threads <num_threads>]
 ```
 ---
 
@@ -70,6 +68,7 @@ Unauthorized scanning may be illegal in many jurisdictions.
 Use this tool responsibly for educational purposes or authorized penetration testing only.
 
 Reports are generated in text format under the results/ folder.
+
 
 
 
