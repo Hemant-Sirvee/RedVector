@@ -51,17 +51,6 @@ redvector -u <target> --scan <scan_type> [--threads <num_threads>]
 ```
 ---
 
-## ⚙ Dependencies
-
-**requests,**
-**beautifulsoup4,** 
-**dnspython,** 
-**python-whois,** 
-**Python ≥ 3.8**
-```bash
-pip install -r requirements.txt
-```
-
 ## ⚠ Notes
 
 Ensure you have permission to scan the target.
@@ -73,6 +62,7 @@ Use this tool responsibly for educational purposes or authorized penetration tes
 Reports are generated in text format under the results/ folder.
 
 **Always run the tool in the above created venv**
+
 
 
 
