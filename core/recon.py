@@ -2,15 +2,31 @@ import socket
 import whois
 import dns.resolver
 import requests
+from urllib.parse import urlparse
+
+
+def extract_domain(target):
+    """
+    Normalize input to get only the domain.
+    Example:
+      https://testphp.vulnweb.com/ -> testphp.vulnweb.com
+      http://example.com -> example.com
+      example.com -> example.com
+    """
+    parsed = urlparse(target)
+    if parsed.netloc:
+        return parsed.netloc
+    return target.strip("/")
 
 
 def run_recon(target):
-    print(f"\n[+] Running Recon Module on: {target}")
+    domain = extract_domain(target)
+    print(f"\n[+] Running Recon Module on: {domain}")
 
     # --- WHOIS Lookup ---
     try:
         print("\n[🔍] WHOIS Lookup:")
-        w = whois.whois(target)
+        w = whois.whois(domain)
         print("  Registrar:", getattr(w, "registrar", "N/A"))
         print("  Creation Date:", getattr(w, "creation_date", "N/A"))
         print("  Expiration Date:", getattr(w, "expiration_date", "N/A"))
@@ -24,9 +40,9 @@ def run_recon(target):
     resolver.timeout = 5
     resolver.lifetime = 5
 
-    for record_type in ["A", "MX", "NS" , "AAAA"]:
+    for record_type in ["A", "MX", "NS"]:
         try:
-            answers = resolver.resolve(target, record_type)
+            answers = resolver.resolve(domain, record_type)
             print(f"  {record_type} Records:")
             for r in answers:
                 print("   ", r.to_text())
@@ -34,7 +50,7 @@ def run_recon(target):
             print(f"  [!] DNS lookup error for {record_type}: {e}")
 
     # --- Subdomain Enumeration ---
-    enumerate_subdomains_otx(target)
+    enumerate_subdomains_otx(domain)
 
 
 def enumerate_subdomains_otx(domain):
