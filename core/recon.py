@@ -40,7 +40,7 @@ def run_recon(target):
     resolver.timeout = 5
     resolver.lifetime = 5
 
-    for record_type in ["A", "MX", "NS"]:
+    for record_type in ["A", "MX", "NS" , "AAAA"]:
         try:
             answers = resolver.resolve(domain, record_type)
             print(f"  {record_type} Records:")
@@ -107,3 +107,4 @@ def check_accessible_subdomains(subdomains):
         print(f"\n[✓] {len(alive)} subdomains are publicly accessible/misconfigured.")
 
     return alive
+
